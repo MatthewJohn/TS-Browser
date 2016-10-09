@@ -21,7 +21,7 @@
 
     <div class="screenshot">
       {% if screenshot not in (job_status.QUEUED, job_status.RUNNING, job_status.FAILED, None) %}
-      <img class="screenshot-image" src="data:image/png;base64,{{ screenshot }}" />
+      <a href="data:image/png;base64,{{ screenshot }}"><img class="screenshot-image" src="data:image/png;base64,{{ screenshot }}" /></a>
       {% elif screenshot == job_status.QUEUED %}
       Thumbnail generation in job queue
       {% elif screenshot == job_status.RUNNING %}
@@ -99,7 +99,7 @@
         <tr><td><br /></td></tr>
 
 
-        <!-- Audio Streams -->
+        <!-- Other Streams -->
         {% if other_streams %}
           <tr><th>Type</th><th>PID</th><th>Index</th><th>Codec</th><th>Bit Rate</th></tr>
           {% for stream_id in other_streams %}

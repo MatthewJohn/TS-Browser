@@ -143,8 +143,8 @@ class Inspector(object):
         directory = os.path.dirname(self.filename)
         filename = os.path.basename(self.filename)
         web_dir = directory.replace(TS_DIR, '')
-        if TS_DIR in web_dir:
-            web_dir = '/'
+        if not web_dir.startswith('/'):
+            web_dir = "/%s" % web_dir
         return {
             'dir': directory,
             'filename': filename,
