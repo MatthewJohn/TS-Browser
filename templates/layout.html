@@ -1,0 +1,48 @@
+<!--
+# Copyright (c) 2016 - Matt Comben
+#
+# This file is part of TransportStreamCatalogue.
+#
+# TransportStreamCatalogue is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 2 of the License, or
+# (at your option) any later version.
+#
+# TransportStreamCatalogue is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+-->
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="/static/ts_web.css">
+</head>
+
+<body>
+  <div id="server-header">
+    <div id="curves-border">
+      <!--<img src="/static/curves.png" id="curves" />--><!-- <- Enable if you're special and you know you are -->
+    </div>
+    <div id="server-header-int">
+      <img style="vertical-align:middle" src="/static/logo.png" width=150 alt="I.T. Dev Ltd"/>
+      Transport Stream Browser
+      <p id="managed">Open source project, see <a href="https://github.com/MatthewJohn">MatthewJohn (Comben)</a></p>
+    </div>
+  </div>
+
+  <table id="service-menu">
+    <tbody>
+      <tr>
+        <td><a href='/'>Home</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="content">
+    {% block content %}{% endblock %}
+  </div>
+
+</body>
+</html>

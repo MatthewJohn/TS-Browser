@@ -1,0 +1,41 @@
+<!--
+# Copyright (c) 2016 - Matt Comben
+#
+# This file is part of TransportStreamCatalogue.
+#
+# TransportStreamCatalogue is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 2 of the License, or
+# (at your option) any later version.
+#
+# TransportStreamCatalogue is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+-->
+{% extends "layout.html" %}
+{% block content %}
+{% if parent %}
+<a href="{{ parent }}">Parent</a>
+{% endif %}
+  <table style="margin: auto">
+    {% if not subdirectories %}
+      <tr><td>No Sub-directories</td></tr>
+    {% else %}
+      <tr><th>Directories</th></tr>
+      {% for dir in subdirectories %}
+        <tr><td><a href="{{ dir }}">{{ dir }} </a></td>
+      {% endfor %}
+    {% endif %}
+    {% if files %}
+      <tr><th>Files</th></tr>
+      {% for ts_file in files %}
+        <tr><td><a href="{{ ts_file }}">{{ ts_file }}</a></td></tr>
+      {% endfor %}
+    {% else %}
+      <tr><td>No Files</td></tr>
+    {% endif %}
+  </table>
+{% endblock %}
