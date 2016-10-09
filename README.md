@@ -21,7 +21,17 @@ You may wish to also toggle ''threaded=True'' in the self.app.start() in start()
 ### Run
 
     python ./server.py
-    
+
+## Screenshots
+
+Directory listing
+
+![Directory listing](/images/dir_list.png?raw=true "")
+
+Transport Stream information
+
+![Directory listing](/images/ts_info.png?raw=true "")
+ 
 # LICENSE
 TransportStreamCatalgoue is licensed under GPL v2. For more information, please see LICENSE
 
