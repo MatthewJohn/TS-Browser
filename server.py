@@ -362,14 +362,19 @@ class WebServer(object):
             for index, stream in enumerate(metadata['streams']):
                 if 'codec_type' in stream and stream['codec_type'] == 'video':
                     video_streams.append(index)
+                    try:
+                        if 'avg_frame_rate' in stream:
+                            stream['avg_frame_rate_norm'] = eval(stream['avg_frame_rate'])
+                    except ZeroDivisionError:
+                        pass
                 elif 'codec_type' in stream and stream['codec_type'] == 'audio':
                     audio_streams.append(index)
                 else:
                     other_streams.append(index)
 
-        if 'format' in metadata and 'size' in metadata['format']:
-            metadata['format']['size_hr'] = humanize.naturalsize(metadata['format']['size'],
-                                                                 gnu=True)
+            if 'format' in metadata and 'size' in metadata['format']:
+                metadata['format']['size_hr'] = humanize.naturalsize(metadata['format']['size'],
+                                                                     gnu=True)
 
 
         return render_template('ts_file.html', inspector=inspector,

@@ -143,3 +143,8 @@ table#service-menu td:hover
   width: auto;
   height: auto;
 }
+
+tr:nth-child(2n) {background: #CCE}
+
+tr td:nth-child(2n+3) {background: #EEF}
+tr th:nth-child(2n+3) {background: #EEF}

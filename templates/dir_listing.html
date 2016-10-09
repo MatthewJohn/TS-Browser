@@ -29,10 +29,11 @@
         <tr><td><a href="{{ dir }}">{{ dir }} </a></td>
       {% endfor %}
     {% endif %}
+    <tr><td><br /></td></tr>
     {% if files %}
       <tr><th>Files</th></tr>
       {% for ts_file in files %}
-        <tr><td><a href="{{ ts_file }}">{{ ts_file }}</a></td></tr>
+        <tr><td><a href="{{ files[ts_file].get_file_paths()['web_path'] }}">{{ ts_file }}</a></td></tr>
       {% endfor %}
     {% else %}
       <tr><td>No Files</td></tr>

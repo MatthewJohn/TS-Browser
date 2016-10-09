@@ -31,7 +31,7 @@
       {% endif %}
     </div>
 
-    {% if metadata not in (job_status.QUEUED, job_status.RUNNING, job_status.FAILED, None) %}
+    {% if metadata not in (job_status.QUEUED, job_status.RUNNING, job_status.FAILED, None, job_status.COMPLETE) %}
 
       <table style="float: left">
         <tr><td></td><th>File Information</th></tr>
@@ -41,6 +41,7 @@
         <tr><th>Size</th><td>{{ metadata['format']['size_hr'] }}</td></tr>
         <tr><th>Length (s)</th><td>{{ metadata['format']['duration'] }}</td></tr>
         <tr><th>Format</th><td>{{ metadata['format']['format_long_name'] }}</td></tr>
+        <tr></tr>
         <tr><th></th><td>{{ metadata['format']['format_name'] }}</td></tr>
         <tr><th>Bitrate</th><td>{{ metadata['format']['bit_rate'] }}</td></tr>
       </table>
@@ -63,6 +64,7 @@
             <td>{{ metadata['streams'][video_stream_id]['width'] or 'N/A' }}</td>
             <td>{{ metadata['streams'][video_stream_id]['display_aspect_ratio'] or 'N/A' }}</td>
             <td>{{ metadata['streams'][video_stream_id]['avg_frame_rate'] or 'N/A' }}
+              ({{ metadata['streams'][video_stream_id]['avg_frame_rate_norm'] or 'N/A' }})</td>
             <td>{{ metadata['streams'][video_stream_id]['codec_name'] }} ({{ metadata['streams'][video_stream_id]['codec_long_name'] }})</td>
             <td>{{ metadata['streams'][video_stream_id]['bit_rate'] or 'N/A' }}</td>
             <td>{{ metadata['streams'][video_stream_id]['pix_fmt'] or 'N/A' }}</td>
@@ -105,7 +107,7 @@
             <td>{{ metadata['streams'][stream_id]['codec_type'] }}</td>
             <td>{{ metadata['streams'][stream_id]['id'] or 'N/A' }}</td>
             <td>{{ stream_id }}</td>
-            <td>{{ metadata['streams'][stream_id]['codec_name'] }} ({{ metadata['streams'][audio_stream_id]['codec_long_name'] }})</td>
+            <td>{{ metadata['streams'][stream_id]['codec_name'] }} ({{ metadata['streams'][stream_id]['codec_long_name'] }})</td>
             <td>{{ metadata['streams'][stream_id]['bit_rate'] or 'N/A' }}</td>
           </tr>
           {% endfor %}
