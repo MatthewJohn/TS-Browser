@@ -1,4 +1,6 @@
-# Transport Stream Catalogue
+# Transport Stream Browser
+
+This application provides a basic web interface for viewing details about transport streams held on a server (presumably a central file sever)
 
 ### Install dependencies
 
