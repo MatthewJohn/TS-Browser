@@ -5,12 +5,12 @@
 #
 # TransportStreamBrowser is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 2 of the License, or
+# the Free Software FouN/Ation, either version 2 of the License, or
 # (at your option) any later version.
 #
 # TransportStreamBrowser is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# MERCHAN/ABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
@@ -53,15 +53,16 @@
 
         <!-- Video Stream -->
         {% if video_streams %}
-          <tr><th>Type</th><th>PID</th><th>Index</th><th>Height</th><th>Width</th><th>Display Aps. Ratio</th><th>Codec</th><th>Bit Rate</th><th>Pixel Format</th><th>Start PTS</th></tr>
+          <tr><th>Type</th><th>PID</th><th>Index</th><th>Height</th><th>Width</th><th>Display Aps. Ratio</th><th>Frame Rate</th><th>Codec</th><th>Bit Rate</th><th>Pixel Format</th><th>Start PTS</th></tr>
           {% for video_stream_id in video_streams %}
           <tr>
             <td>{{ metadata['streams'][video_stream_id]['codec_type'] }}</td>
-            <td>{{ metadata['streams'][video_stream_id]['id'] or 'N.A' }}</td>
+            <td>{{ metadata['streams'][video_stream_id]['id'] or 'N/A' }}</td>
             <td>{{ video_stream_id }}</td>
-            <td>{{ metadata['streams'][video_stream_id]['height'] or 'N.A' }}</td>
-            <td>{{ metadata['streams'][video_stream_id]['width'] or 'N.A' }}</td>
-            <td>{{ metadata['streams'][video_stream_id]['display_aspect_ratio'] or 'N.A' }}</td>
+            <td>{{ metadata['streams'][video_stream_id]['height'] or 'N/A' }}</td>
+            <td>{{ metadata['streams'][video_stream_id]['width'] or 'N/A' }}</td>
+            <td>{{ metadata['streams'][video_stream_id]['display_aspect_ratio'] or 'N/A' }}</td>
+            <td>{{ metadata['streams'][video_stream_id]['avg_frame_rate'] or 'N/A' }}
             <td>{{ metadata['streams'][video_stream_id]['codec_name'] }} ({{ metadata['streams'][video_stream_id]['codec_long_name'] }})</td>
             <td>{{ metadata['streams'][video_stream_id]['bit_rate'] or 'N/A' }}</td>
             <td>{{ metadata['streams'][video_stream_id]['pix_fmt'] or 'N/A' }}</td>
@@ -79,11 +80,11 @@
           {% for audio_stream_id in audio_streams %}
           <tr>
             <td>{{ metadata['streams'][audio_stream_id]['codec_type'] }}</td>
-            <td>{{ metadata['streams'][audio_stream_id]['id'] or 'N.A' }}</td>
+            <td>{{ metadata['streams'][audio_stream_id]['id'] or 'N/A' }}</td>
             <td>{{ audio_stream_id }}</td>
-            <td>{{ metadata['streams'][audio_stream_id]['channels'] or 'N.A' }}</td>
-            <td>{{ metadata['streams'][audio_stream_id]['channel_layout'] or 'N.A' }}</td>
-            <td>{{ metadata['streams'][audio_stream_id]['sample_rate'] or 'N.A' }}</td>
+            <td>{{ metadata['streams'][audio_stream_id]['channels'] or 'N/A' }}</td>
+            <td>{{ metadata['streams'][audio_stream_id]['channel_layout'] or 'N/A' }}</td>
+            <td>{{ metadata['streams'][audio_stream_id]['sample_rate'] or 'N/A' }}</td>
             <td>{{ metadata['streams'][audio_stream_id]['codec_name'] }} ({{ metadata['streams'][audio_stream_id]['codec_long_name'] }})</td>
             <td>{{ metadata['streams'][audio_stream_id]['bit_rate'] or 'N/A' }}</td>
             <td>{{ metadata['streams'][audio_stream_id]['bits_per_sample'] or 'N/A' }}</td>
@@ -102,14 +103,12 @@
           {% for stream_id in other_streams %}
           <tr>
             <td>{{ metadata['streams'][stream_id]['codec_type'] }}</td>
-            <td>{{ metadata['streams'][stream_id]['id'] or 'N.A' }}</td>
+            <td>{{ metadata['streams'][stream_id]['id'] or 'N/A' }}</td>
             <td>{{ stream_id }}</td>
             <td>{{ metadata['streams'][stream_id]['codec_name'] }} ({{ metadata['streams'][audio_stream_id]['codec_long_name'] }})</td>
             <td>{{ metadata['streams'][stream_id]['bit_rate'] or 'N/A' }}</td>
           </tr>
           {% endfor %}
-        {% else %}
-        <tr><td>No Other Streams available</td></tr>
         {% endif %}
         <tr></tr>
 
