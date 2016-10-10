@@ -144,6 +144,11 @@ table#service-menu td:hover
   height: auto;
 }
 
+#screenshot-image
+{
+  cursor: pointer;
+}
+
 tr:nth-child(2n) {background: #CCE}
 
 tr td:nth-child(2n+3) {background: #EEF}

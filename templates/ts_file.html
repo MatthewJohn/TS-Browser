@@ -17,11 +17,17 @@
 -->
 {% extends "layout.html" %}
 {% block content %}
+    <script>
+    function download_screenshot()
+    {
+      window.location.href = document.getElementById('screenshot-image').src;
+    }
+    </script>
     <a href="{{ parent }}" style="margin: auto; width: 100%">Parent</a>
 
     <div class="screenshot">
       {% if screenshot not in (job_status.QUEUED, job_status.RUNNING, job_status.FAILED, None) %}
-      <a href="data:image/png;base64,{{ screenshot }}"><img class="screenshot-image" src="data:image/png;base64,{{ screenshot }}" /></a>
+      <img id="screenshot-image" class="screenshot-image" src="data:image/png;base64,{{ screenshot }}" onclick="download_screenshot()"/>
       {% elif screenshot == job_status.QUEUED %}
       Thumbnail generation in job queue
       {% elif screenshot == job_status.RUNNING %}
@@ -31,12 +37,12 @@
       {% endif %}
     </div>
 
-    {% if metadata not in (job_status.QUEUED, job_status.RUNNING, job_status.FAILED, None, job_status.COMPLETE) %}
 
       <table style="float: left">
         <tr><td></td><th>File Information</th></tr>
         <tr><th>File</th><td>{{ inspector.get_file_paths()['filename'] }}</td></tr>
         <tr><th>Path</th><td>{{ inspector.filename }}</td></tr>
+        {% if metadata not in (job_status.QUEUED, job_status.RUNNING, job_status.FAILED, None, job_status.COMPLETE) %}
         <tr><th>Size (bytes)</th><td>{{ metadata['format']['size'] }}</td></tr>
         <tr><th>Size</th><td>{{ metadata['format']['size_hr'] }}</td></tr>
         <tr><th>Length (s)</th><td>{{ metadata['format']['duration'] }}</td></tr>
@@ -44,10 +50,12 @@
         <tr></tr>
         <tr><th></th><td>{{ metadata['format']['format_name'] }}</td></tr>
         <tr><th>Bitrate</th><td>{{ metadata['format']['bit_rate'] }}</td></tr>
+        {% endif %}
       </table>
 
       <div style="float: left; width: 100%"></div>
 
+    {% if metadata not in (job_status.QUEUED, job_status.RUNNING, job_status.FAILED, None, job_status.COMPLETE) %}
       
       <table style="float: left">
         <thead><th>Streams</th></thead>
